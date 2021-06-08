@@ -1,0 +1,28 @@
+<div class="auth-container full-height flex-centered-con pad-32">
+    <div class="auth flex-col-centered-container">
+        <mat-card class="flex-col-centered-container">
+            <div class="heading text-center mar-32">
+                Login
+            </div>
+            <div class="login-form mar-32 pad-vr-32">
+                <form class="flex-col-centered-container" [formGroup]="loginForm">
+                    <div class="mar-vr-16">
+                        <mat-form-field appearance="outline" color="primary">
+                            <mat-label>Username</mat-label>
+                            <input matInput placeholder="username" formControlName="username">
+                        </mat-form-field>
+                    </div>
+
+                    <div class="mar-vr-16">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Password</mat-label>
+                            <input matInput placeholder="password" formControlName="password">
+                        </mat-form-field>
+                    </div>
+
+
+                </form>
+            </div>
+        </mat-card>
+    </div>
+</div>
