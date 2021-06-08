@@ -1,0 +1,25 @@
+<div class="orders-container mar-top-32">
+    <div class="orders">
+        <div class="orders-table">
+            <table mat-table [dataSource]="customersData" class="mat-elevation-z8 full-width">
+
+                <!-- Customer ID Column -->
+                <ng-container matColumnDef="customer_id">
+                    <th mat-header-cell *matHeaderCellDef> Customer ID </th>
+                    <td mat-cell *matCellDef="let element"> {{element.customer_id}} </td>
+                </ng-container>
+
+                <!-- Customer Name Column -->
+                <ng-container matColumnDef="customer_name">
+                    <th mat-header-cell *matHeaderCellDef> Customer Name</th>
+                    <td mat-cell *matCellDef="let element"> {{element.customer_name}} </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+
+        </div>
+
+    </div>
+</div>
