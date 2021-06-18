@@ -9,6 +9,8 @@ import { ItemsComponent } from './components/items/items.component';
 
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatTableModule } from '@angular/material/table';
+import { OrdersService } from './services/orders/orders.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
     declarations: [
@@ -20,9 +22,11 @@ import { MatTableModule } from '@angular/material/table';
     ],
     imports: [
         CommonModule,
+        HttpClientModule,
         DashboardRoutingModule,
         MatTabsModule,
         MatTableModule,
     ],
+    providers: [OrdersService],
 })
 export class DashboardModule {}

@@ -24,6 +24,12 @@ export interface LoginRequest {
     password: string;
 }
 
+export interface RegistrationRequest {
+    username: string;
+    email: string;
+    password: string;
+}
+
 export interface LoginResponse {
     name?: string;
     username?: string;

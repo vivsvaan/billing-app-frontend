@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Order } from 'src/app/app.interfaces';
+import { Utils } from 'src/app/_helpers';
 import { OrdersService } from '../../services/orders/orders.service';
 
 @Component({
@@ -19,7 +20,8 @@ export class OrdersComponent implements OnInit {
     }
 
     fetchOrdersList() {
-        this.ordersService.fetchOrders().subscribe((res: Order[]) => {
+        const shopId = Utils.storageHelper.shopId;
+        this.ordersService.fetchOrders(shopId).subscribe((res: Order[]) => {
             this.ordersData = res;
         });
     }

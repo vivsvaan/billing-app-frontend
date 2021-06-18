@@ -13,7 +13,7 @@ class ApplicationUrls {
     public static getInstance(): ApplicationUrls {
         if (!ApplicationUrls.appUrlsInstance) {
             ApplicationUrls.appUrlsInstance = new ApplicationUrls();
-            ApplicationUrls.appUrlsInstance.serverUrl = `${SERVER_URL}/`;
+            ApplicationUrls.appUrlsInstance.serverUrl = `${SERVER_URL}`;
         }
         return ApplicationUrls.appUrlsInstance;
     }
@@ -25,6 +25,9 @@ class ApplicationUrls {
     get loginUrl() {
         return this.serverUrl + '/user/login';
     }
+    get registrationUrl() {
+        return this.serverUrl + '/user/register';
+    }
     get logoutUrl() {
         return this.serverUrl + '/user/logout/';
     }
@@ -34,7 +37,7 @@ class ApplicationUrls {
      */
 
     get ordersListUrl() {
-        return this.serverUrl + 'orders/';
+        return this.serverUrl + 'orders';
     }
 }
 

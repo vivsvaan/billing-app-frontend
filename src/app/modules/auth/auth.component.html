@@ -5,18 +5,18 @@
 
                 <!-- LOGIN FORM -->
                 <mat-tab label="Login">
-                    <div class="login-container">
-                        <div class="login-form mar-32 pad-vr-32">
+                    <div class="login-container flex-col-centered-con mar-vr-32">
+                        <div class="login-form pad-vr-32">
                             <form class="flex-col-centered-container" [formGroup]="loginForm">
                                 <div class="mar-vr-16">
-                                    <mat-form-field appearance="outline" color="primary">
+                                    <mat-form-field appearance="outline" class="full-width">
                                         <mat-label>Username</mat-label>
                                         <input matInput placeholder="username" formControlName="username">
                                     </mat-form-field>
                                 </div>
 
                                 <div class="mar-vr-16">
-                                    <mat-form-field appearance="outline">
+                                    <mat-form-field appearance="outline" class="full-width">
                                         <mat-label>Password</mat-label>
                                         <input matInput placeholder="password" formControlName="password">
                                     </mat-form-field>
@@ -24,39 +24,41 @@
                             </form>
                         </div>
                         <div class="login-submit">
-                            <button mat-raised-button>Login</button>
+                            <button mat-raised-button color="primary" (click)="login()">Login</button>
                         </div>
                     </div>
                 </mat-tab>
 
                 <!-- REGISTRATION FORM -->
                 <mat-tab label="Register">
-                    <div class="registeration-form mar-32 pad-vr-32">
-                        <form class="flex-col-centered-container" [formGroup]="registrationForm">
-                            <div class="mar-vr-16">
-                                <mat-form-field appearance="outline" color="primary">
-                                    <mat-label>Username</mat-label>
-                                    <input matInput placeholder="username" formControlName="username">
-                                </mat-form-field>
-                            </div>
+                    <div class="registration-container flex-col-centered-con mar-vr-32">
+                        <div class="registration-form pad-vr-32">
+                            <form class="flex-col-centered-container" [formGroup]="registrationForm">
+                                <div class="mar-vr-16">
+                                    <mat-form-field appearance="outline" class="full-width">
+                                        <mat-label>Username</mat-label>
+                                        <input matInput placeholder="username" formControlName="username">
+                                    </mat-form-field>
+                                </div>
 
-                            <div class="mar-vr-16">
-                                <mat-form-field appearance="outline" color="primary">
-                                    <mat-label>Email</mat-label>
-                                    <input matInput placeholder="Email" formControlName="email">
-                                </mat-form-field>
-                            </div>
+                                <div class="mar-vr-16">
+                                    <mat-form-field appearance="outline" class="full-width">
+                                        <mat-label>Email</mat-label>
+                                        <input matInput placeholder="email" formControlName="email">
+                                    </mat-form-field>
+                                </div>
 
-                            <div class="mar-vr-16">
-                                <mat-form-field appearance="outline">
-                                    <mat-label>Password</mat-label>
-                                    <input matInput placeholder="password" formControlName="password">
-                                </mat-form-field>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="registration-submit">
-                        <button mat-raised-button>Register</button>
+                                <div class="mar-vr-16">
+                                    <mat-form-field appearance="outline" class="full-width">
+                                        <mat-label>Password</mat-label>
+                                        <input matInput placeholder="password" formControlName="password">
+                                    </mat-form-field>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="registration-submit">
+                            <button mat-raised-button color="primary" (click)="register()">Register</button>
+                        </div>
                     </div>
                 </mat-tab>
             </mat-tab-group>

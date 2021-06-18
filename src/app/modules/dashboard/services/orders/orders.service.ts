@@ -9,7 +9,7 @@ export class OrdersService {
     constructor(private http: HttpClient) {}
 
     fetchOrders(shopId: number) {
-        const url = applicationUrls.ordersListUrl + shopId;
-        return this.http.get(url);
+        const url = applicationUrls.ordersListUrl;
+        return this.http.get(url, { params: { shopId: shopId.toString() } });
     }
 }

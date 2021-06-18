@@ -8,11 +8,13 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { AuthComponent } from './auth.component';
 import { MatTabsModule } from '@angular/material/tabs';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
     declarations: [AuthComponent],
     imports: [
         CommonModule,
+        HttpClientModule,
         AuthRoutingModule,
         FormsModule,
         ReactiveFormsModule,

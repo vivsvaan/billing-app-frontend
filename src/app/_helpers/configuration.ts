@@ -4,4 +4,4 @@
 ######################################################################
 */
 
-export const SERVER_URL = 'saksham-billing-app.herokuapp.com';
+export const SERVER_URL = 'https://saksham-billing-app.herokuapp.com';
