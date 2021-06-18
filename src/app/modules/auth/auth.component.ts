@@ -12,6 +12,12 @@ export class AuthComponent implements OnInit {
         password: new FormControl(''),
     });
 
+    registrationForm = new FormGroup({
+        username: new FormControl(''),
+        email: new FormControl(''),
+        password: new FormControl(''),
+    });
+
     constructor() {}
 
     ngOnInit(): void {}

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Order } from 'src/app/app.interfaces';
+import { OrdersService } from '../../services/orders/orders.service';
 
 @Component({
     selector: 'app-orders',
@@ -11,7 +12,15 @@ export class OrdersComponent implements OnInit {
 
     displayedColumns = ['order_id', 'order_status', 'customer_name', 'items'];
 
-    constructor() {}
+    constructor(private ordersService: OrdersService) {}
 
-    ngOnInit(): void {}
+    ngOnInit(): void {
+        this.fetchOrdersList();
+    }
+
+    fetchOrdersList() {
+        this.ordersService.fetchOrders().subscribe((res: Order[]) => {
+            this.ordersData = res;
+        });
+    }
 }

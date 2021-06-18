@@ -1,28 +1,65 @@
 <div class="auth-container full-height flex-centered-con pad-32">
     <div class="auth flex-col-centered-container">
         <mat-card class="flex-col-centered-container">
-            <div class="heading text-center mar-32">
-                Login
-            </div>
-            <div class="login-form mar-32 pad-vr-32">
-                <form class="flex-col-centered-container" [formGroup]="loginForm">
-                    <div class="mar-vr-16">
-                        <mat-form-field appearance="outline" color="primary">
-                            <mat-label>Username</mat-label>
-                            <input matInput placeholder="username" formControlName="username">
-                        </mat-form-field>
+            <mat-tab-group mat-align-tabs="center">
+
+                <!-- LOGIN FORM -->
+                <mat-tab label="Login">
+                    <div class="login-container">
+                        <div class="login-form mar-32 pad-vr-32">
+                            <form class="flex-col-centered-container" [formGroup]="loginForm">
+                                <div class="mar-vr-16">
+                                    <mat-form-field appearance="outline" color="primary">
+                                        <mat-label>Username</mat-label>
+                                        <input matInput placeholder="username" formControlName="username">
+                                    </mat-form-field>
+                                </div>
+
+                                <div class="mar-vr-16">
+                                    <mat-form-field appearance="outline">
+                                        <mat-label>Password</mat-label>
+                                        <input matInput placeholder="password" formControlName="password">
+                                    </mat-form-field>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="login-submit">
+                            <button mat-raised-button>Login</button>
+                        </div>
                     </div>
+                </mat-tab>
 
-                    <div class="mar-vr-16">
-                        <mat-form-field appearance="outline">
-                            <mat-label>Password</mat-label>
-                            <input matInput placeholder="password" formControlName="password">
-                        </mat-form-field>
+                <!-- REGISTRATION FORM -->
+                <mat-tab label="Register">
+                    <div class="registeration-form mar-32 pad-vr-32">
+                        <form class="flex-col-centered-container" [formGroup]="registrationForm">
+                            <div class="mar-vr-16">
+                                <mat-form-field appearance="outline" color="primary">
+                                    <mat-label>Username</mat-label>
+                                    <input matInput placeholder="username" formControlName="username">
+                                </mat-form-field>
+                            </div>
+
+                            <div class="mar-vr-16">
+                                <mat-form-field appearance="outline" color="primary">
+                                    <mat-label>Email</mat-label>
+                                    <input matInput placeholder="Email" formControlName="email">
+                                </mat-form-field>
+                            </div>
+
+                            <div class="mar-vr-16">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Password</mat-label>
+                                    <input matInput placeholder="password" formControlName="password">
+                                </mat-form-field>
+                            </div>
+                        </form>
                     </div>
-
-
-                </form>
-            </div>
+                    <div class="registration-submit">
+                        <button mat-raised-button>Register</button>
+                    </div>
+                </mat-tab>
+            </mat-tab-group>
         </mat-card>
     </div>
 </div>

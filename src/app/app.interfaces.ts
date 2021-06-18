@@ -1,6 +1,44 @@
-export interface User {
-    name: string;
+/** 
+##################################################
+#################### USER ########################
+##################################################
+*/
+export interface UserInfo {
+    name?: string;
+    username?: string;
+    email?: string;
+    password?: string;
+    access_token?: string;
+    refresh_token?: string;
+    access_token_expiry?: string;
 }
+
+/** 
+##################################################
+#################### AUTH ########################
+##################################################
+*/
+
+export interface LoginRequest {
+    username: string;
+    password: string;
+}
+
+export interface LoginResponse {
+    name?: string;
+    username?: string;
+    email?: string;
+    password?: string;
+    access_token?: string;
+    refresh_token?: string;
+    access_token_expiry?: string;
+}
+
+/** 
+##################################################
+#################### CUSTOMERS ###################
+##################################################
+*/
 
 export interface Customer {
     customer_id: number;
@@ -9,6 +47,22 @@ export interface Customer {
     customer_email: string;
     customer_mobile: string;
 }
+
+/** 
+##################################################
+#################### RESTAURANTS #################
+##################################################
+*/
+
+export interface Restaurant {
+    name: string;
+}
+
+/** 
+##################################################
+#################### ITEMS #######################
+##################################################
+*/
 
 export interface Item {
     item_id: number;
@@ -19,9 +73,23 @@ export interface Item {
     item_price: number;
 }
 
+export interface BillItem {
+    item: Item;
+    itemPrice: number;
+    quantity: number;
+}
+
+/** 
+##################################################
+#################### ORDERS ######################
+##################################################
+*/
+
 export interface Order {
-    order_id: number;
-    order_status: string;
+    completed: boolean;
     customer: Customer;
-    items: Item[];
+    restaurant: Restaurant;
+    billItems: BillItem[];
+    billAmount: number;
+    discount: number;
 }
