@@ -1,4 +1,4 @@
-import { HttpEvent, HttpHandler, HttpRequest } from '@angular/common/http';
+import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { from, Observable, throwError } from 'rxjs';
@@ -9,7 +9,7 @@ import { Utils } from 'src/app/_helpers/utilities';
 @Injectable({
     providedIn: 'root',
 })
-export class HttpInterceptorService {
+export class HttpInterceptorService implements HttpInterceptor {
     private _requestCount = 0;
     private _storageHelper = Utils.storageHelper;
 
@@ -47,17 +47,18 @@ export class HttpInterceptorService {
             this._storageHelper.userInfo.access_token &&
             this._storageHelper.userInfo.access_token.length > 0;
 
-        if (request.url.indexOf(applicationUrls.tokenRefreshUrl) >= 0) {
-            request = this.addAuthorizationHeader(
-                request,
-                this._storageHelper.userInfo.refresh_token
-            );
-            return next
-                .handle(request)
-                .pipe(this.successHandler, this.errorHandler) as Observable<
-                HttpEvent<any>
-            >;
-        }
+        // TODO: Code for refresh token
+        // if (request.url.indexOf(applicationUrls.tokenRefreshUrl) >= 0) {
+        //     request = this.addAuthorizationHeader(
+        //         request,
+        //         this._storageHelper.userInfo.refresh_token
+        //     );
+        //     return next
+        //         .handle(request)
+        //         .pipe(this.successHandler, this.errorHandler) as Observable<
+        //         HttpEvent<any>
+        //     >;
+        // }
 
         return from(
             shouldHaveToken ? this.getAccessToken() : Promise.resolve(null)
@@ -74,7 +75,7 @@ export class HttpInterceptorService {
         );
     }
 
-    private addAuthorizationHeader(request, access_token?: string) {
+    private addAuthorizationHeader(request: HttpRequest<any>, access_token?: string) {
         const newHeaders = {};
         if (access_token) {
             newHeaders['Authorization'] = access_token;
@@ -85,20 +86,24 @@ export class HttpInterceptorService {
             newHeaders['Authorization'] =
                 this._storageHelper.userInfo.access_token;
         }
+        request = request.clone({setHeaders: newHeaders});
+        return request;
     }
 
     private async getAccessToken(): Promise<string> {
-        if (
-            new Date().getTime() >=
-            +this._storageHelper.userInfo.access_token_expiry
-        ) {
-            const response = await this.authService.refreshToken();
-            let userInfo = this._storageHelper.userInfo;
-            userInfo.access_token = response.access_token;
-            Utils.storageHelper.userInfo = userInfo;
-            return response.access_token;
-        } else {
-            return this._storageHelper.userInfo.access_token;
-        }
+        // TODO: Refresh token
+        // if (
+        //     new Date().getTime() >=
+        //     +this._storageHelper.userInfo.access_token_expiry
+        // ) {
+        //     const response = await this.authService.refreshToken();
+        //     let userInfo = this._storageHelper.userInfo;
+        //     userInfo.access_token = response.access_token;
+        //     Utils.storageHelper.userInfo = userInfo;
+        //     return response.access_token;
+        // } else {
+        //     return this._storageHelper.userInfo.access_token;
+        // }
+        return this._storageHelper.userInfo.access_token;
     }
 }

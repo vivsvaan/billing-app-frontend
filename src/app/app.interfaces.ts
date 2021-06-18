@@ -5,9 +5,8 @@
 */
 export interface UserInfo {
     name?: string;
-    username?: string;
+    username: string;
     email?: string;
-    password?: string;
     access_token?: string;
     refresh_token?: string;
     access_token_expiry?: string;
@@ -56,12 +55,16 @@ export interface Customer {
 
 /** 
 ##################################################
-#################### RESTAURANTS #################
+#################### SHOP ########################
 ##################################################
 */
 
-export interface Restaurant {
+export interface Shop {
     name: string;
+    address?: string;
+    email?: string;
+    mobile: number;
+    user: string;
 }
 
 /** 

@@ -32,6 +32,10 @@ class ApplicationUrls {
         return this.serverUrl + '/user/logout/';
     }
 
+    get tokenRefreshUrl() {
+        return this.serverUrl;
+    }
+
     /**
      * Orders
      */

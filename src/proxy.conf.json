@@ -1,0 +1,6 @@
+{
+    "/*": {
+        "target": "https://saksham-billing-app.herokuapp.com",
+        "secure": true
+    }
+}
