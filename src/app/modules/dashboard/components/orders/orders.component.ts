@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Order } from 'src/app/app.interfaces';
+import { Utils } from 'src/app/_helpers';
+import { OrdersService } from '../../services/orders/orders.service';
 
 @Component({
     selector: 'app-orders',
@@ -11,7 +13,16 @@ export class OrdersComponent implements OnInit {
 
     displayedColumns = ['order_id', 'order_status', 'customer_name', 'items'];
 
-    constructor() {}
+    constructor(private ordersService: OrdersService) {}
 
-    ngOnInit(): void {}
+    ngOnInit(): void {
+        this.fetchOrdersList();
+    }
+
+    fetchOrdersList() {
+        const shopId = Utils.storageHelper.shopId;
+        this.ordersService.fetchOrders(shopId).subscribe((res: Order[]) => {
+            this.ordersData = res;
+        });
+    }
 }

@@ -1,7 +1,13 @@
-import { LOCAL_STORAGE_KEYS } from './constants';
-// import { UserInfo } from '../app.interfaces';
+/** 
+######################################################################
+########################### APP STORAGE ##############################
+######################################################################
+*/
 
-class StorageHelperClass {
+import { UserInfo } from 'src/app/app.interfaces';
+import { LOCAL_STORAGE_KEYS } from './constants';
+
+export class StorageHelper {
     constructor() {}
 
     private get(key: string) {
@@ -18,12 +24,25 @@ class StorageHelperClass {
         localStorage.removeItem(LOCAL_STORAGE_KEYS.UserInfo);
     }
 
-    // get userInfo(): UserInfo { return this.get(LOCAL_STORAGE_KEYS.UserInfo); }
-    // set userInfo(userInfo: UserInfo) { this.set(LOCAL_STORAGE_KEYS.UserInfo, userInfo); }
+    /**
+     * User Info
+     */
+    get userInfo(): UserInfo {
+        return this.get(LOCAL_STORAGE_KEYS.UserInfo);
+    }
+
+    set userInfo(userInfo: UserInfo) {
+        this.set(LOCAL_STORAGE_KEYS.UserInfo, userInfo);
+    }
 
     /**
-     * Define seperate getters and setters here
+     * Shop ID
      */
-}
+    get shopId(): number {
+        return this.get(LOCAL_STORAGE_KEYS.ShopId);
+    }
 
-export const StorageHelper = new StorageHelperClass();
+    set shopId(shopId: number) {
+        this.set(LOCAL_STORAGE_KEYS.ShopId, shopId);
+    }
+}
